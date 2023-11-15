@@ -1,37 +1,33 @@
-const btns = document.querySelectorAll(".btn");
-const body = document.body;
+// Getting Elements From The DOM
+const ratings = document.querySelectorAll(".ratings");
+const ratingsContainer = document.querySelector(".ratings-container");
+const sendBtn = document.querySelector("#send");
+const panel = document.querySelector("#panel");
 
-//Iteration over all button
-btns.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    color = btn.value;
-    changeBackground(color);
-  });
+let selectedRating = "Satisfied";
+
+// Attaching Event
+ratingsContainer.addEventListener("click", (e) => {
+  if (e.target.parentNode.classList.contains("rating")) {
+    console.log(e.target.classList.contains("rating"));
+    removeActive();
+
+    e.target.parentNode.classList.add("active");
+    selectedRating = e.target.nextElementSibling.innerHTML;
+  }
 });
 
-function changeBackground(color) {
-  body.className = "";
+sendBtn.addEventListener("click", () => {
+  panel.innerHTML = `
+    <p class="heart">💖</p>
+    <strong>Thank You! </strong>
+    <br>
+    <strong>Feedback: ${selectedRating} </strong>
+  `;
+});
 
-  switch (color) {
-    case "purple":
-      body.classList.add(purple);
-      break;
-    case "blue":
-      body.classList.add("blue");
-      break;
-    case "red":
-      body.classList.add("red");
-      break;
-    case "green":
-      body.classList.add("green");
-      break;
-    case "yellow":
-      body.classList.add("yellow");
-      break;
-    case "teal":
-      body.classList.add("teal");
-      break;
-    default:
-      break;
+function removeActive() {
+  for (let i = 0; i < ratings.length; i++) {
+    ratings[i].classList.remove("active");
   }
 }
