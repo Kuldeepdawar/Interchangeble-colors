@@ -3,31 +3,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Feedback</title>
+    <title>Calculator</title>
 
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <section class="panel-container" id="panel">
-      <strong>Your Feedback 👀</strong>
-      <div class="ratings-container">
-        <div class="container">
-          <div class="rating">
-            <div class="icon">😒</div>
-            <small>Unhappy</small>
-          </div>
-          <div class="rating">
-            <div class="icon">😐</div>
-            <small>Neutral</small>
-          </div>
-          <div class="rating">
-            <div class="icon">😊</div>
-            <small>Satisfied</small>
-          </div>
-        </div>
+    <div class="main">
+      <div class="inputs">
+        <h1 class="result">Result</h1>
+        <select id="selectOp">
+          <option value="plus">+</option>
+          <option value="min">-</option>
+          <option value="dev">/</option>
+          <option value="multi">*</option>
+        </select>
+        <input class="num1" type="number" placeholder="Number 1" />
+        <input class="num2" type="number" placeholder="Number 2" />
       </div>
-      <button class="btn" id="send">Send Feedback</button>
-    </section>
+      <div class="submitBtn">
+        <button id="btn">submit</button>
+      </div>
+    </div>
     <script src="app.js"></script>
   </body>
 </html>

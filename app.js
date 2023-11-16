@@ -1,33 +1,21 @@
-// Getting Elements From The DOM
-const ratings = document.querySelectorAll(".ratings");
-const ratingsContainer = document.querySelector(".ratings-container");
-const sendBtn = document.querySelector("#send");
-const panel = document.querySelector("#panel");
+document.getElementById("btn").addEventListener("click", () => {
+  // Getting Elements From The DOM
+  let num1 = document.querySelector(".num1").value;
+  let num2 = document.querySelector(".num2").value;
+  let result = document.querySelector(".result");
+  let oprator = document.getElementById("selectOp").value;
 
-let selectedRating = "Satisfied";
-
-// Attaching Event
-ratingsContainer.addEventListener("click", (e) => {
-  if (e.target.parentNode.classList.contains("rating")) {
-    console.log(e.target.classList.contains("rating"));
-    removeActive();
-
-    e.target.parentNode.classList.add("active");
-    selectedRating = e.target.nextElementSibling.innerHTML;
+  switch (oprator) {
+    case "plus":
+      result.innerHTML = +num1 + +num2;
+      break;
+    case "min":
+      result.innerHTML = +num1 - +num2;
+      break;
+    case "dev":
+      result.innerHTML = +num1 / +num2;
+      break;
+    case "multi":
+      result.innerHTML = +num1 * +num2;
   }
 });
-
-sendBtn.addEventListener("click", () => {
-  panel.innerHTML = `
-    <p class="heart">💖</p>
-    <strong>Thank You! </strong>
-    <br>
-    <strong>Feedback: ${selectedRating} </strong>
-  `;
-});
-
-function removeActive() {
-  for (let i = 0; i < ratings.length; i++) {
-    ratings[i].classList.remove("active");
-  }
-}
